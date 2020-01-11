@@ -67,6 +67,7 @@ class MusicLibraryController
     puts "Please enter the name of an artist:"
     input = gets.strip
     if Artist.artist_list.include?(input)
+      matched = Artist.all.find {|artist| artist.name == artist}
       list = []
       input.songs.each {|song| list << "#{song.name} - #{song.genre.name}"}
       list.sort.each_with_index {|item, i| puts "#{i + 1}. #{item}"}
