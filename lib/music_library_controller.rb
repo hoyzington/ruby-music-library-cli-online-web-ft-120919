@@ -67,9 +67,9 @@ class MusicLibraryController
     puts "Please enter the name of an artist:"
     input = gets.strip
     if Artist.artist_list.include?(input)
-      matched = Artist.all.find {|artist| artist.name == artist}
+      matched = Artist.all.find {|artist| artist.name == input}
       list = []
-      input.songs.each {|song| list << "#{song.name} - #{song.genre.name}"}
+      matched.songs.each {|song| list << "#{song.name} - #{song.genre.name}"}
       list.sort.each_with_index {|item, i| puts "#{i + 1}. #{item}"}
     end
   end
@@ -78,11 +78,12 @@ class MusicLibraryController
     puts "Please enter the name of an genre:"
     input = gets.strip
     if Genre.genre_list.include?(input)
+      match_a = Genre.all.find {|genre| genre.name == input}
       list = []
-      input.songs.each {|song| list << song.name}
+      match_a.songs.each {|song| list << song.name}
       list.sort.each_with_index do |title, i|
-        matched = Song.all.find {|song| song.name == title}
-        puts "#{i + 1}. #{matched.artist.name} - #{title}"
+        match_b = Song.all.find {|song| song.name == title}
+        puts "#{i + 1}. #{match_b.artist.name} - #{title}"
       end
     end
   end
