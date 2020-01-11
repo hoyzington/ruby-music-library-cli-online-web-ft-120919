@@ -75,7 +75,7 @@ class MusicLibraryController
   end
 
   def list_songs_by_genre    # convert input string to instance
-    puts "Please enter the name of an genre:"
+    puts "Please enter the name of a genre:"
     input = gets.strip
     if Genre.genre_list.include?(input)
       match_a = Genre.all.find {|genre| genre.name == input}
