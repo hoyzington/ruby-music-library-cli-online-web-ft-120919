@@ -92,7 +92,7 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     input = gets.strip
     index = input.to_i - 1
-    if index > 0 and Song.all.count >= index
+    if index > 0 and Song.all.count > index
       song = Song.all.find {|s| s.name == song_list[index]}
       puts "Playing #{song.name} by #{song.artist.name}"
     end
