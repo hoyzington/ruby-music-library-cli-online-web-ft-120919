@@ -63,7 +63,7 @@ class MusicLibraryController
     end
   end
 
-  def list_songs_by_artist    # convert input string to instance
+  def list_songs_by_artist
     puts "Please enter the name of an artist:"
     input = gets.strip
     if Artist.artist_list.include?(input)
@@ -74,7 +74,7 @@ class MusicLibraryController
     end
   end
 
-  def list_songs_by_genre    # convert input string to instance
+  def list_songs_by_genre
     puts "Please enter the name of a genre:"
     input = gets.strip
     if Genre.genre_list.include?(input)
@@ -91,8 +91,9 @@ class MusicLibraryController
   def play_song
     puts "Which song number would you like to play?"
     input = gets.strip
-    if input > 0 and Song.all.count >= input
-      song = Song.all.sort[input - 1]
+    num = input.to_i
+    if num > 0 and Song.all.count >= num
+      song = Song.all.sort[num - 1]
       puts "Playing #{song.name} by #{song.artist.name}"
     end
   end
